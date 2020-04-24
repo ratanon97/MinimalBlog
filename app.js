@@ -27,6 +27,16 @@ app.get("/contact",function(req,res){
   res.render("contact",{contactTitle:"Contact",contactInfo:contactContent})
 });
 
+app.get("/compose",function(req,res){
+  res.render("compose",{composeTitle:"Compose"})
+  console.log(cc);
+});
+
+app.post("/compose",function(req,res){
+  const cc = req.body.compose;
+  res.redirect("/compose");
+});
+
 
 
 app.listen(3000, function() {
