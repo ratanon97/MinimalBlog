@@ -18,7 +18,6 @@ app.use(express.static("public"));
 
 app.get("/",function(req,res){
   res.render("home",{firstTitle:"Home",firstContent:homeStartingContent,composePosts:posts})
-  console.log(posts);
 });
 
 app.get("/about",function(req,res){
@@ -42,7 +41,19 @@ app.post("/compose",function(req,res){
   res.redirect("/");
 });
 
+app.get("/posts/:postParameter", function(req,res){
+  const requestedTitle = req.params.postParameter;
 
+  posts.forEach(function(post){
+    const storedTitle = post.postTitle;
+
+    if (requestedTitle === storedTitle){
+      console.log("Match Found!");
+    } else{
+      console.log("Match Not Found!");
+    }
+  });
+});
 
 app.listen(3000, function() {
   console.log("Server started on port 3000");

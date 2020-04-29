@@ -2,6 +2,10 @@
 
     <h1><%= firstTitle %></h1>
     <p> <%= firstContent %> </p>
-    <p> <%= composePosts %> </p>
+    <% composePosts.forEach(function(post){ %>
+        <h1><%=post.postTitle %></h1>
+        <p><%=post.postContent %></p>
+    <%});%>
+        
 
 <%- include("partials/footer") -%>
